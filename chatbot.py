@@ -5,7 +5,7 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 app = Flask(__name__)
 
 # Create chatbot instance
-bot = ChatBot("chatbot", read_only=True)  # read_only=True to avoid training on user input
+bot = ChatBot("chatbot", read_only=True)  
 trainer = ChatterBotCorpusTrainer(bot)
 trainer.train("chatterbot.corpus.english")
 
@@ -17,7 +17,7 @@ def home():
 # Route to get bot response
 @app.route("/get")
 def get_bot_response():
-    user_text = request.args.get("userMessage")  # Get the message from URL query params
+    user_text = request.args.get("userMessage") 
     if user_text:
         return str(bot.get_response(user_text))
     return "Sorry, I didn't get that."
